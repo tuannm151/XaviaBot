@@ -5,7 +5,8 @@ const config = {
     description: "Turn on/off level up notification",
     usage: "[on/off]",
     cooldown: 5,
-    credits: "XaviaTeam"
+    isHidden: true,
+
 }
 
 const langData = {

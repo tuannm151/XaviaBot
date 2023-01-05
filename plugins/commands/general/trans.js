@@ -3,7 +3,6 @@ const config = {
     aliases: ['translate', 'dich'],
     description: "Translate text to bot language.",
     usage: '[lang] [text]',
-    credits: 'XaviaTeam'
 }
 
 const langData = {

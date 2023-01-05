@@ -8,12 +8,13 @@ const config = {
     name: "work",
     aliases: ["wk"],
     description: "Work to earn money",
-    credits: "XaviaTeam",
+
     extra: {
         min: 200,
         max: 1000,
         delay: [_30MINUTES, _1HOURS, _3HOURS, _2HOURS, _6HOURS]
-    }
+    },
+    isHidden: true,
 }
 
 const langData = {

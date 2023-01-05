@@ -6,7 +6,7 @@ const config = {
     name: "love",
     description: "Love banner with a user",
     usage: "<@mention/reply>",
-    credits: "XaviaTeam",
+
     cooldown: 5
 }
 

@@ -30,5 +30,11 @@
   "send": {
     "minAmount": 100,
     "fee": 0.05
+  },
+  "audio": {
+    "MAX_SONGS": 6
+  },
+  "video": {
+    "MAX_VIDEOS": 6
   }
 }

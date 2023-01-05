@@ -1,7 +1,7 @@
 const config = {
     name: "data",
     permissions: [2],
-    credits: "XaviaTeam",
+
     isAbsolute: true
 }
 

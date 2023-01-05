@@ -5,7 +5,7 @@ const config = {
     usage: "[uid/profileUrl]",
     cooldown: 3,
     permissions: [1],
-    credits: "XaviaTeam"
+
 }
 
 const langData = {

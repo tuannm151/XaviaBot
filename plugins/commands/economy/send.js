@@ -1,14 +1,15 @@
 const config = {
     name: "send",
     aliases: ["pay"],
-    credits: "XaviaTeam",
+
     description: "Send money to other user",
     usage: "mention> <amount>",
     cooldown: 5,
     extra: {
         minAmount: 100,
         fee: 0.05
-    }
+    },
+    isHidden: true,
 }
 
 const langData = {

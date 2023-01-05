@@ -4,7 +4,6 @@ const config = {
     version: "1.0.3",
     description: "Show all commands or command details",
     usage: "[command] (optional)",
-    credits: "XaviaTeam"
 }
 
 
@@ -21,7 +20,6 @@ const langData = {
             ⇒ Permissions: {permissions}
             ⇒ Category: {category}
             ⇒ Cooldown: {cooldown}
-            ⇒ Credits: {credits}
         `,
         "0": "Member",
         "1": "Group Admin",
@@ -39,7 +37,6 @@ const langData = {
             ⇒ Quyền hạn: {permissions}
             ⇒ Thể loại: {category}
             ⇒ Thời gian chờ: {cooldown}
-            ⇒ Người viết: {credits}
         `,
         "0": "Thành viên",
         "1": "Quản trị nhóm",
@@ -56,7 +53,6 @@ const langData = {
             ⇒ الصلاحيات: {permissions}
             ⇒ فئة: {category}
             ⇒ وقت الانتظار: {cooldown}
-            ⇒ الاعتمادات: {credits}
         `,
         "0": "عضو",
         "1": "إدارة المجموعة",

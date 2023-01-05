@@ -1,5 +1,6 @@
 const config = {
-    credits: "XaviaTeam"
+    isHidden: true,
+
 }
 
 function onCall({ message }) {

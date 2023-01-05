@@ -4,7 +4,7 @@ const config = {
     description: "Turn on/off resend message",
     usage: "[on/off]",
     cooldown: 5,
-    credits: "XaviaTeam"
+
 }
 
 const langData = {

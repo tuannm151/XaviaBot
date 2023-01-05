@@ -4,7 +4,8 @@ const config = {
     permissions: [2],
     description: "Set money of a user",
     usage: "<reply/tag/me> <amount>",
-    credits: "XaviaTeam"
+    isHidden: true,
+
 }
 
 const langData = {

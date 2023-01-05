@@ -4,7 +4,7 @@ const config = {
     usage: "[reply/@mention]",
     cooldown: 5,
     permissions: [1],
-    credits: "XaviaTeam"
+
 }
 
 const langData = {

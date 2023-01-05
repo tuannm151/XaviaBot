@@ -4,7 +4,7 @@ const config = {
     description: "Set prefix for group",
     usage: "<prefix>",
     cooldown: 5,
-    credits: "XaviaTeam"
+
 }
 
 const langData = {

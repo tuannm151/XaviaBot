@@ -4,7 +4,8 @@ const config = {
     name: "daily",
     aliases: ["claim"],
     description: "Claim daily reward",
-    credits: "XaviaTeam",
+    isHidden: true,
+
     extra: {
         min: 300,
         max: 1000

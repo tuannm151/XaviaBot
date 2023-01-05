@@ -1,7 +1,7 @@
 const config = {
     name: "wallpaper",
     aliases: ["anhnen", "wp"],
-    credits: "XaviaTeam"
+
 }
 
 function onCall({ message }) {

@@ -6,7 +6,7 @@ const config = {
     name: "jail",
     description: "Jail a user",
     usage: "<@mention/reply>",
-    credits: "XaviaTeam",
+
     cooldown: 5
 }
 

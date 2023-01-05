@@ -11,7 +11,6 @@ const config = {
     description: "Play a video from youtube",
     usage: '<keyword/url>',
     cooldown: 30,
-    credits: "XaviaTeam",
     extra: {
         "MAX_VIDEOS": 6
     }

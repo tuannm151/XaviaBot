@@ -5,7 +5,7 @@ const config = {
     usage: "[all]",
     cooldown: 3,
     permissions: [2],
-    credits: "XaviaTeam",
+
     isAbsolute: true
 }
 

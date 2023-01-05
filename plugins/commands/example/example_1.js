@@ -7,7 +7,7 @@ const config = {
     permissions: [0, 1, 2],
     isAbsolute: false,
     isHidden: false,
-    credits: "XaviaTeam",
+
     extra: {
         // will be saved in config.plugins.json
         extraProp: "This is an extra property"

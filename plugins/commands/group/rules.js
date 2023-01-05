@@ -5,7 +5,7 @@ const config = {
     usage: "[add/remove] [rule]",
     cooldown: 3,
     permissions: [0, 1, 2],
-    credits: "XaviaTeam"
+
 }
 
 const langData = {

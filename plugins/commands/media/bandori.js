@@ -11,7 +11,8 @@ const config = {
     description: 'Play BanG Dream! songs, garupa PICO videos, and more!',
     usage: '<song> | <pico> | <pull>',
     cooldown: 5,
-    credits: "XaviaTeam",
+    isHidden: true,
+
     extra: {
         pullRate: {
             _SPECIAL: 2,

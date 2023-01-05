@@ -3,10 +3,11 @@ const config = {
     aliases: ["taixiu", "tx"],
     description: "Play sicbo with bot.",
     usage: "[tai/xiu] [bet] | [big/small] [bet] (default bet is 50)",
-    credits: "XaviaTeam",
+
     extra: {
         minbet: 50
-    }
+    },
+    isHidden: true,
 }
 
 const langData = {

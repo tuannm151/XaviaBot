@@ -5,7 +5,7 @@ import { join } from 'path';
 const config = {
     description: 'Get your global/local rank',
     usage: "[-g/-l] [@mention/reply]",
-    credits: "XaviaTeam",
+
     cooldown: 10
 }
 

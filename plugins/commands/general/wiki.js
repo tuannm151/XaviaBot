@@ -6,7 +6,7 @@ const config = {
     usage: "[keyword]",
     cooldown: 3,
     permissions: [0, 1, 2],
-    credits: "XaviaTeam"
+
 }
 
 const langData = {

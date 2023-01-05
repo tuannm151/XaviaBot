@@ -4,7 +4,7 @@ const config = {
     description: "Check user's/self money",
     usage: "<reply/tag/none>",
     cooldown: 5,
-    credits: "XaviaTeam"
+    isHidden: true,
 }
 
 const langData = {

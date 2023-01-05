@@ -3,7 +3,7 @@ const config = {
     usage: "option1 | option2 | option3 | ...",
     description: "Choose one of the options",
     cooldown: 5,
-    credits: "XaviaTeam"
+
 }
 
 const langData = {

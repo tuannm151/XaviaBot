@@ -13,7 +13,7 @@ const config = {
     description: "Play music from youtube",
     usage: '<keyword/url>',
     cooldown: 30,
-    credits: "XaviaTeam",
+
     extra: {
         "MAX_SONGS": 6
     }

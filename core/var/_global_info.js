@@ -1,4 +1,5 @@
 import { resolve as resolvePath } from 'path';
+import { Configuration, OpenAIApi } from "openai";
 import axios from 'axios';
 
 const _global = {
@@ -46,9 +47,11 @@ const _global = {
     refreshState: null,
     refreshMqtt: null,
     mongo: null,
+    openai: null,
     restart: restart,
     shutdown: shutdown,
-    maintain: false
+    maintain: false,
+    openai_apikeys: new Array(),
 }
 
 function _change_prototype_DATA(data) {
@@ -75,6 +78,11 @@ async function getDomains() {
 
 async function _init_global() {
     const domains = await getDomains();
+    // get apikeys from env separated by ,
+    const openai_apikeys = process.env.OPENAI_APIKEYS.split(',');
+    const openai_config = new Configuration({
+        apiKey: openai_apikeys[0],
+    });
 
     global.mainPath = _global.mainPath;
     global.corePath = _global.corePath;
@@ -106,6 +114,8 @@ async function _init_global() {
     global.restart = _global.restart;
     global.shutdown = _global.shutdown;
     global.maintain = _global.maintain;
+    global.openai = new OpenAIApi(openai_config);
+
 }
 
 async function clear() {

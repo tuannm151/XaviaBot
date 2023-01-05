@@ -4,7 +4,7 @@ const config = {
     usage: "[character]",
     cooldown: 3,
     permissions: [0, 1, 2],
-    credits: "XaviaTeam"
+    isHidden: true,
 }
 
 const langData = {

@@ -4,7 +4,7 @@ const config = {
     usage: "[start/set/relapse/stop]",
     cooldown: 5,
     permissions: [0, 1, 2],
-    credits: "XaviaTeam"
+
 }
 
 const langData = {
