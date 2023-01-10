@@ -33,6 +33,7 @@ core/var/data/cache/*
 !core/var/data/cache/README.txt
 core/var/data/*.json
 fbstate.json
+appstate.json
 *.bak
 !core/var/assets/*
 !core/var/assets/levelup_gifs/*

@@ -1,5 +1,6 @@
 import { resolve as resolvePath } from 'path';
 import { Configuration, OpenAIApi } from "openai";
+
 import axios from 'axios';
 
 const _global = {
@@ -52,6 +53,7 @@ const _global = {
     shutdown: shutdown,
     maintain: false,
     openai_apikeys: new Array(),
+    gpt_session: new Object(),
 }
 
 function _change_prototype_DATA(data) {
@@ -115,7 +117,8 @@ async function _init_global() {
     global.shutdown = _global.shutdown;
     global.maintain = _global.maintain;
     global.openai = new OpenAIApi(openai_config);
-
+    global.gpt_endpoint = process.env.GPT_ENDPOINT;
+    global.gpt_session = _global.gpt_session;
 }
 
 async function clear() {

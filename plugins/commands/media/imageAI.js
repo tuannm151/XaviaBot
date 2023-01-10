@@ -30,12 +30,12 @@ async function onCall({ message, args, getLang }) {
             response_format: "url"
         });
 
-        Promise.race(response.data.data.map(async (url) => {
-            let imgStream = await global.getStream(url.url);
+        Promise.all(response.data.data.map(async (url) => await global.getStream(url.url))).then((streams) => {
             message.reply({
-                attachment: imgStream
+                attachment: streams,
             });
-        }))
+        })
+
 
 
     } catch (e) {

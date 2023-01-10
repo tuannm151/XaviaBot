@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": ">=16"
+    "node": ">=18.13.0"
   },
   "scripts": {
     "start": "node index.js",
@@ -29,7 +29,7 @@
     "@replit/database": "^2.0.2",
     "@xaviabot/fca-unofficial": "^1.0.7",
     "axios": "^0.27.2",
-    "canvas": "^2.10.1",
+    "canvas": "^2.11.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
