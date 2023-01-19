@@ -22,10 +22,10 @@ async function onCall({ message, args, getLang, data: { user } }) {
         if (!args[0]) return message.reply(getLang("noMessage"));
         const input = args.join(" ");
 
-        // if (input === 'newchat') {
-        //     global.gpt_session[user.userID] = null;
-        //     return message.reply('Đã tạo cuộc hội thoại mới cho bạn.');
-        // }
+        if (input === 'newchat') {
+            global.gpt_session[user.userID] = null;
+            return message.reply('Đã tạo cuộc hội thoại mới cho bạn.');
+        }
 
         // const data = {
         //     content: input,
@@ -49,7 +49,21 @@ async function onCall({ message, args, getLang, data: { user } }) {
         //     parent_id: responseData.response_id
         // };
 
-        const result = await global.gpt_api.sendMessage(input);
+        let data = {};
+
+        if (global.gpt_session?.[user.userID]) {
+            data.conversationId = global.gpt_session[user.userID].conversationId;
+            data.parentMessageId = global.gpt_session[user.userID].parentMessageId;
+        } else {
+            data = undefined;
+        }
+
+        const result = await global.gpt_api.sendMessage(input, data);
+
+        global.gpt_session[user.userID] = {
+            conversationId: result.conversationId,
+            parentMessageId: result.messageId
+        };
 
         await message.reply(result.response);
     } catch (e) {
