@@ -1,6 +1,6 @@
 import { resolve as resolvePath } from 'path';
 import { Configuration, OpenAIApi } from "openai";
-
+import { ChatGPTAPIBrowser } from 'chatgpt'
 import axios from 'axios';
 
 const _global = {
@@ -86,6 +86,11 @@ async function _init_global() {
         apiKey: openai_apikeys[0],
     });
 
+    const gpt_api = new ChatGPTAPIBrowser({
+        email: process.env.OPENAI_EMAIL,
+        password: process.env.OPENAI_PASSWORD
+    });
+
     global.mainPath = _global.mainPath;
     global.corePath = _global.corePath;
     global.cachePath = _global.cachePath;
@@ -119,6 +124,8 @@ async function _init_global() {
     global.openai = new OpenAIApi(openai_config);
     global.gpt_endpoint = process.env.GPT_ENDPOINT;
     global.gpt_session = _global.gpt_session;
+    gpt_api.initSession();
+    global.gpt_api = gpt_api;
 }
 
 async function clear() {

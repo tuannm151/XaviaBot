@@ -22,34 +22,36 @@ async function onCall({ message, args, getLang, data: { user } }) {
         if (!args[0]) return message.reply(getLang("noMessage"));
         const input = args.join(" ");
 
-        if (input === 'newchat') {
-            global.gpt_session[user.userID] = null;
-            return message.reply('Đã tạo cuộc hội thoại mới cho bạn.');
-        }
+        // if (input === 'newchat') {
+        //     global.gpt_session[user.userID] = null;
+        //     return message.reply('Đã tạo cuộc hội thoại mới cho bạn.');
+        // }
 
-        const data = {
-            content: input,
-        }
+        // const data = {
+        //     content: input,
+        // }
 
-        if (global.gpt_session?.[user.userID]) {
-            data.conversation_id = global.gpt_session[user.userID].conversation_id;
-            data.parent_id = global.gpt_session[user.userID].parent_id;
-        }
+        // if (global.gpt_session?.[user.userID]) {
+        //     data.conversation_id = global.gpt_session[user.userID].conversation_id;
+        //     data.parent_id = global.gpt_session[user.userID].parent_id;
+        // }
 
-        const result = await axios.post(global.gpt_endpoint, data, {
-            headers: {
-                Authorization: `minhtuandev`
-            }
-        });
+        // const result = await axios.post(global.gpt_endpoint, data, {
+        //     headers: {
+        //         Authorization: `minhtuandev`
+        //     }
+        // });
 
-        const responseData = result.data;
+        // const responseData = result.data;
 
-        global.gpt_session[user.userID] = {
-            conversation_id: responseData.conversation_id,
-            parent_id: responseData.response_id
-        };
+        // global.gpt_session[user.userID] = {
+        //     conversation_id: responseData.conversation_id,
+        //     parent_id: responseData.response_id
+        // };
 
-        await message.reply(responseData.content);
+        const result = await global.gpt_api.sendMessage(input);
+
+        await message.reply(result.response);
     } catch (e) {
         console.error(e);
         message.reply(getLang("error"))
