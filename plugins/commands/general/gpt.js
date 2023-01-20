@@ -28,12 +28,12 @@ async function onCall({ message, args, getLang, data: { user } }) {
         }
 
         const data = {
-            content: input,
+            message: input,
         }
 
         if (global.gpt_session?.[user.userID]) {
-            data.conversation_id = global.gpt_session[user.userID].conversation_id;
-            data.parent_id = global.gpt_session[user.userID].parent_id;
+            data.conversationId = global.gpt_session[user.userID].conversationId;
+            data.parentMessageId = global.gpt_session[user.userID].parentMessageId;
         }
 
         const result = await axios.post(global.gpt_endpoint, data, {
@@ -45,11 +45,11 @@ async function onCall({ message, args, getLang, data: { user } }) {
         const responseData = result.data;
 
         global.gpt_session[user.userID] = {
-            conversation_id: responseData.conversation_id,
-            parent_id: responseData.response_id
+            conversationId: responseData.conversationId,
+            parentMessageId: responseData.messageId
         };
 
-        await message.reply(responseData.content);
+        await message.reply(responseData.response);
     } catch (e) {
         console.error(e);
         message.reply(getLang("error"))
