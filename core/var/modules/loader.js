@@ -9,16 +9,15 @@ function loadConfig() {
 
     if (!config.hasOwnProperty('REFRESH')) config.REFRESH = "43200000";
 
-    // load from env for PREFIX, NAME, TZ, MODERATORS, ABSOLUTES, userAgent, LANGUAGE, ALLOW INBOX, APPSTATE_PROTECTION
-    if (process.env.hasOwnProperty('PREFIX')) config.PREFIX = process.env.PREFIX || '/';
-    if (process.env.hasOwnProperty('NAME')) config.NAME = process.env.NAME || 'Xavia';
-    if (process.env.hasOwnProperty('TZ')) config.timezone = process.env.TZ || 'Asia/Ho_Chi_Minh';
-    if (process.env.hasOwnProperty('MODERATORS')) config.MODERATORS = process.env.MODERATORS.split(',') || [];
-    if (process.env.hasOwnProperty('ABSOLUTES')) config.ABSOLUTES = process.env.ABSOLUTES.split(',') || [];
-    if (process.env.hasOwnProperty('USERAGENT')) config.FCA_OPTIONS.userAgent = process.env.UserAgent || "Mozilla/5.0 (Linux; Android 9; SM-G973U Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36";
-    if (process.env.hasOwnProperty('LANGUAGE')) config.LANGUAGE = process.env.LANGUAGE || "en_US";
-    if (process.env.hasOwnProperty('ALLOW_INBOX')) config.ALLOW_INBOX = process.env.ALLOW_INBOX || true;
-    if (process.env.hasOwnProperty('APPSTATE_PROTECTION')) config.APPSTATE_PROTECTION = process.env.APPSTATE_PROTECTION || true;
+    config.PREFIX = process.env.hasOwnProperty('PREFIX') ? process.env.PREFIX : "/";
+    config.NAME = process.env.hasOwnProperty('NAME') ? process.env.NAME : "Xavie";
+    config.timezone = process.env.hasOwnProperty('TZ') ? process.env.TZ : "Asia/Ho_Chi_Minh";
+    config.MODERATORS = process.env.hasOwnProperty('MODERATORS') ? process.env.MODERATORS.split(',') : [];
+    config.ABSOLUTES = process.env.hasOwnProperty('ABSOLUTES') ? process.env.ABSOLUTES.split(',') : [];
+    config.FCA_OPTIONS.userAgent = process.env.hasOwnProperty('USER_AGENT') ? process.env.USER_AGENT : "Mozilla/5.0 (Linux; Android 9; SM-G973U Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36";
+    config.LANGUAGE = process.env.hasOwnProperty('LANGUAGE') ? process.env.LANGUAGE : "en_US";
+    config.ALLOW_INBOX = process.env.hasOwnProperty('ALLOW_INBOX') ? process.env.ALLOW_INBOX : false;
+    config.APPSTATE_PROTECTION = process.env.hasOwnProperty('APPSTATE_PROTECTION') ? process.env.APPSTATE_PROTECTION : true;
 
     config.save = () => {
         const configStringified = JSON.stringify(config, (key, value) => {
