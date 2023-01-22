@@ -21,21 +21,6 @@ async function onCall({ message, args, getLang, data: { user } }) {
         if (!args[0]) return message.reply(getLang("noMessage"));
         const input = args.join(" ");
 
-
-        // if (input === 'newchat') {
-        //     global.gpt_session[user.userID] = null;
-        //     return message.reply('Đã tạo cuộc hội thoại mới cho bạn.');
-        // }
-
-        // const data = {
-        //     message: input,
-        // }
-
-        // if (global.gpt_session?.[user.userID]) {
-        //     data.conversationId = global.gpt_session[user.userID].conversationId;
-        //     data.parentMessageId = global.gpt_session[user.userID].parentMessageId;
-        // }
-
         if (!global.db) {
             await message.reply("Try again later...");
         }

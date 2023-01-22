@@ -16,8 +16,8 @@ function loadConfig() {
     config.ABSOLUTES = process.env.hasOwnProperty('ABSOLUTES') ? process.env.ABSOLUTES.split(',') : [];
     config.FCA_OPTIONS.userAgent = process.env.hasOwnProperty('USER_AGENT') ? process.env.USER_AGENT : "Mozilla/5.0 (Linux; Android 9; SM-G973U Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36";
     config.LANGUAGE = process.env.hasOwnProperty('LANGUAGE') ? process.env.LANGUAGE : "en_US";
-    config.ALLOW_INBOX = process.env.hasOwnProperty('ALLOW_INBOX') ? process.env.ALLOW_INBOX : false;
-    config.APPSTATE_PROTECTION = process.env.hasOwnProperty('APPSTATE_PROTECTION') ? process.env.APPSTATE_PROTECTION : true;
+    config.ALLOW_INBOX = process.env.hasOwnProperty('ALLOW_INBOX') ? process.env.ALLOW_INBOX === "true" ? true : false : false;
+    config.APPSTATE_PROTECTION = process.env.hasOwnProperty('APPSTATE_PROTECTION') ? process.env.APPSTATE_PROTECTION === "true" ? true : false : true;
 
     config.save = () => {
         const configStringified = JSON.stringify(config, (key, value) => {
