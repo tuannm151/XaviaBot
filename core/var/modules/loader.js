@@ -1,13 +1,24 @@
 import yaml from 'js-yaml';
-import { readFileSync, readdirSync, writeFileSync, unlinkSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync, unlinkSync, existsSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { resolve as resolvePath } from 'path';
+import initSqlJs from 'sql.js';
 
 function loadConfig() {
     const config = JSON.parse(readFileSync(resolvePath(global.mainPath, 'config', 'config.main.json'), 'utf8'));
 
     if (!config.hasOwnProperty('REFRESH')) config.REFRESH = "43200000";
-    if (!config.hasOwnProperty('ABSOLUTES')) config.ABSOLUTES = [];
+
+    // load from env for PREFIX, NAME, TZ, MODERATORS, ABSOLUTES, userAgent, LANGUAGE, ALLOW INBOX, APPSTATE_PROTECTION
+    if (process.env.hasOwnProperty('PREFIX')) config.PREFIX = process.env.PREFIX || '/';
+    if (process.env.hasOwnProperty('NAME')) config.NAME = process.env.NAME || 'Xavia';
+    if (process.env.hasOwnProperty('TZ')) config.timezone = process.env.TZ || 'Asia/Ho_Chi_Minh';
+    if (process.env.hasOwnProperty('MODERATORS')) config.MODERATORS = process.env.MODERATORS.split(',') || [];
+    if (process.env.hasOwnProperty('ABSOLUTES')) config.ABSOLUTES = process.env.ABSOLUTES.split(',') || [];
+    if (process.env.hasOwnProperty('USERAGENT')) config.FCA_OPTIONS.userAgent = process.env.UserAgent || "Mozilla/5.0 (Linux; Android 9; SM-G973U Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36";
+    if (process.env.hasOwnProperty('LANGUAGE')) config.LANGUAGE = process.env.LANGUAGE || "en_US";
+    if (process.env.hasOwnProperty('ALLOW_INBOX')) config.ALLOW_INBOX = process.env.ALLOW_INBOX || true;
+    if (process.env.hasOwnProperty('APPSTATE_PROTECTION')) config.APPSTATE_PROTECTION = process.env.APPSTATE_PROTECTION || true;
 
     config.save = () => {
         const configStringified = JSON.stringify(config, (key, value) => {
@@ -25,6 +36,39 @@ function loadConfig() {
     config.save();
 
     return config;
+}
+
+
+async function loadDatabase() {
+    const sql = await initSqlJs();
+    const path = resolvePath(global.mainPath, 'core', 'var', 'data', 'db.sqlite');
+    let db = null;
+    // init db if not exists
+
+
+    if (existsSync(path)) {
+        const buffer = readFileSync(path);
+        db = new sql.Database(buffer);
+    } else {
+        db = new sql.Database();
+
+        // create table message, include messageId, conversationId, parentId
+        db.run("CREATE TABLE message (msgId TEXT, conversationId TEXT, parentMsgId TEXT, PRIMARY KEY (msgId))");
+
+        const data = db.export();
+        const buffer = Buffer.from(data);
+        writeFileSync(path, buffer);
+    }
+
+    db.save = () => {
+        const data = db.export();
+        const buffer = Buffer.from(data);
+        writeFileSync(path, buffer);
+    };
+    console.log("Database loaded");
+
+
+    return db;
 }
 
 function loadConfigPlugins() {
@@ -435,5 +479,6 @@ export default {
     loadConfigPlugins,
     getLang,
     loadLang,
-    loadPlugins
+    loadPlugins,
+    loadDatabase,
 };

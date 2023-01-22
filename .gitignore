@@ -32,8 +32,10 @@ plugins/cache/*
 core/var/data/cache/*
 !core/var/data/cache/README.txt
 core/var/data/*.json
+core/var/data/db.sqlite
 fbstate.json
 appstate.json
 *.bak
 !core/var/assets/*
 !core/var/assets/levelup_gifs/*
+

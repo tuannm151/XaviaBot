@@ -98,13 +98,11 @@ async function main() {
     child.on("close", async (code) => {
         handleRestartCount();
         if (code !== 0 && restartCount < 5) {
-            console.log();
             logger.error(`An error occurred with exit code ${code}`);
             logger.warn("Restarting Xavia Workers Handler...");
             await new Promise(resolve => setTimeout(resolve, 2000));
             main();
         } else {
-            console.log();
             logger.error("Xavia has been closed.");
             process.exit(0);
         }

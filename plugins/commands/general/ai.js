@@ -22,7 +22,7 @@ async function onCall({ message, args, getLang }) {
     try {
         if (!args[0]) return message.reply(getLang("noMessage"));
         const input = args.join(" ");
-        console.log(input);
+        console.log(message);
 
         const completion = await global.openai.createCompletion({
             model: "text-davinci-003",
@@ -30,7 +30,7 @@ async function onCall({ message, args, getLang }) {
             temperature: 0,
             max_tokens: 4000,
         });
-        console.log(completion.data.choices);
+
         await message.reply(completion.data.choices[0].text);
     } catch (e) {
         console.error(e);
