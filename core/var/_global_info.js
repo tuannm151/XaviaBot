@@ -53,7 +53,6 @@ const _global = {
     maintain: false,
     openai_apikeys: new Array(),
     gpt_session: new Object(),
-    db: new Object(),
 }
 
 function _change_prototype_DATA(data) {
@@ -120,7 +119,6 @@ async function _init_global() {
     global.gpt_endpoint = process.env.GPT_ENDPOINT;
     global.gpt_authKey = process.env.GPT_AUTHKEY || undefined;
     global.gpt_session = _global.gpt_session;
-    global.db = _global.db;
     global.axios = axios;
 }
 
@@ -130,11 +128,6 @@ async function clear() {
     if (global.server !== null) await global.server.close();
     if (global.mongo !== null) await global.mongo.close();
     if (global.listenMqtt !== null) await global.listenMqtt.stopListening();
-    if (global.db !== null) {
-        console.log("Saving database...");
-        global.db.save();
-        global.db.close();
-    }
 
     for (const global_prop in _global) {
         delete global[global_prop];

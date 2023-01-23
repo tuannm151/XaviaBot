@@ -40,9 +40,6 @@ function _load_lang() {
     global.getLang = global.modules.get('loader').getLang;
 }
 
-async function _load_database() {
-    global.db = await global.modules.get('loader').loadDatabase();
-}
 
 function _load_plugins() {
     return global.modules.get('loader').loadPlugins();
@@ -57,7 +54,6 @@ async function _init_var() {
         _load_common();
         _load_config();
         _load_lang();
-        await _load_database();
 
 
         await _load_plugins();

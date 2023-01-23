@@ -38,38 +38,6 @@ function loadConfig() {
 }
 
 
-async function loadDatabase() {
-    const sql = await initSqlJs();
-    const path = resolvePath(global.mainPath, 'core', 'var', 'data', 'db.sqlite');
-    let db = null;
-    // init db if not exists
-
-
-    if (existsSync(path)) {
-        const buffer = readFileSync(path);
-        db = new sql.Database(buffer);
-    } else {
-        db = new sql.Database();
-
-        // create table message, include messageId, conversationId, parentId
-        db.run("CREATE TABLE message (msgId TEXT, conversationId TEXT, parentMsgId TEXT, PRIMARY KEY (msgId))");
-
-        const data = db.export();
-        const buffer = Buffer.from(data);
-        writeFileSync(path, buffer);
-    }
-
-    db.save = () => {
-        const data = db.export();
-        const buffer = Buffer.from(data);
-        writeFileSync(path, buffer);
-    };
-    console.log("Database loaded");
-
-
-    return db;
-}
-
 function loadConfigPlugins() {
     const config = JSON.parse(readFileSync(resolvePath(global.mainPath, 'config', 'config.plugins.json'), 'utf8'));
     return config;
@@ -479,5 +447,4 @@ export default {
     getLang,
     loadLang,
     loadPlugins,
-    loadDatabase,
 };
