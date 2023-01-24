@@ -1,7 +1,7 @@
 # _build.js
 build.start.varLoaded: "تم تحميل متغير البيئة بنجاح."
 build.start.exit: "التنظيف والخروج..."
-build.start.serverStarted: "تمت تهيئة الخادم في البوابة {port}" 
+build.start.serverStarted: "تمت تهيئة الخادم في البوابة {port} بكلمة س"
 
 build.booting.logging: "مسجل حاليا..."
 build.booting.logged: "تم تسجيل الدخول بنجاح - {botID}."
@@ -61,11 +61,11 @@ database.user.get.success: "{userID} - مستخدم جديد"
 database.error: "حدث خطأ أثناء الوصول إلى قاعدة البيانات: {error}"
 
 # events
-plugins.events.change_thread_image.userChangedThreadImage: "\"{author}\" غيرت صورة المجموعة."
+plugins.events.change_thread_image.userChangedThreadImage: '"{author}" غيرت صورة المجموعة.'
 plugins.events.change_thread_image.reversed: "\nغير مسموح بتغيير صورة المجموعة ، لذلك قمت بتغييرها مرة أخرى إلى الصورة القديمة."
 plugins.events.change_thread_image.setNewImage: "\nغير مسموح بتغيير صور المجموعة ولكن نظرًا لعدم وجود صور قديمة ، سيتم استخدام صور جديدة."
 
-plugins.events.subcribe.addSelf: "Bot تمت إضافته إلى المجموعة \"{threadName}\" ({threadId}) من قبل شخص يستخدم \"{authorName}\" ({authorId})."
+plugins.events.subcribe.addSelf: 'Bot تمت إضافته إلى المجموعة "{threadName}" ({threadId}) من قبل شخص يستخدم "{authorName}" ({authorId}).'
 plugins.events.subcribe.connected: "الاتصال ناجح!\nغير مستخدم {PREFIX}تساعد في رؤية قائمة الاوامر."
 plugins.events.subcribe.error.createMonitor: "تعذر إنشاء مجموعة مشرفين لهذه المجموعة."
 plugins.events.subcribe.createdMonitor: "المجموعة {threadId} سيتم رصد العمل في هذه المجموعة"
@@ -73,27 +73,27 @@ plugins.events.subcribe.createdMonitor: "المجموعة {threadId} سيتم ر
 plugins.events.subcribe.welcome: "اهلا {members} الى {threadName}!\nانت {newCount} عضو في هذه المجموعة."
 plugins.events.subcribe.warns: "{username} تم طرده بسبب تجاوز الحد الأقصى لعدد التحذيرات."
 
-plugins.events.unsubcribe.bot.left: "Bot غادر \"{threadName}\" ({threadId})."
-plugins.events.unsubcribe.bot.kicked: "Bot تم طرده من \"{threadName}\" ({threadId}) بواسطة \"{authorName}\" ({authorId})."
+plugins.events.unsubcribe.bot.left: 'Bot غادر "{threadName}" ({threadId}).'
+plugins.events.unsubcribe.bot.kicked: 'Bot تم طرده من "{threadName}" ({threadId}) بواسطة "{authorName}" ({authorId}).'
 # plugins.events.unsubcribe.left: "\"{leftName}\" ({leftId}) غادر المجموعة."
 # plugins.events.unsubcribe.kicked: "\"{leftName}\" ({leftId}) تم طرده من قبل\"{authorName}\" ({authorId})."
 plugins.events.unsubcribe.left: "{leftName} غادر."
 plugins.events.unsubcribe.kicked: "{leftName} تم طرده."
 
-plugins.events.thread-call.startedCall: "\"{authorName}\" ({authorId}) بدأ مكالمة."
-plugins.events.thread-call.startedVideoCall: "\"{authorName}\" ({authorId}) فتح مكالمة فيديو جماعية."
-plugins.events.thread-call.endedCall: "انتهت المكالمة ، وقت الاتصال
-: {callDuration}."plugins.events.thread-call.endedVideoCall: "انتهت مكالمة الفيديو ، ووقت المكالمة: {callDuration}."
-plugins.events.thread-call.joinedCall: "\"{authorName}\" ({authorId}) انضم إلى المكالمة."
-plugins.events.thread-call.joinedVideoCall: "\"{authorName}\" ({authorId}) انضم إلى مكالمة فيديو."
+plugins.events.thread-call.startedCall: '"{authorName}" ({authorId}) بدأ مكالمة.'
+plugins.events.thread-call.startedVideoCall: '"{authorName}" ({authorId}) فتح مكالمة فيديو جماعية.'
+plugins.events.thread-call.endedCall: "انتهت المكالمة ، وقت الاتصال: {callDuration}"
+plugins.events.thread-call.endedVideoCall: "انتهت مكالمة الفيديو ، ووقت المكالمة: {callDuration}."
+plugins.events.thread-call.joinedCall: '"{authorName}" ({authorId}) انضم إلى المكالمة.'
+plugins.events.thread-call.joinedVideoCall: '"{authorName}" ({authorId}) انضم إلى مكالمة فيديو.'
 
-plugins.events.thread-update.name.changed: "\"{authorName}\" ({authorId}) غيرت اسم المجموعة إلى \"{newName}\"."
+plugins.events.thread-update.name.changed: '"{authorName}" ({authorId}) غيرت اسم المجموعة إلى "{newName}".'
 plugins.events.thread-update.name.reversed: "\nغير مسموح بتغيير اسم المجموعة ، لذلك تم تغيير الاسم القديم."
-plugins.events.thread-update.color.changed: "\"{authorName}\" ({authorId}) تغير لون خط المجموعة من {oldColor} الى {newColor}."
-plugins.events.thread-update.emoji.changed: "\"{authorName}\" ({authorId}) تغير الرمز التعبيري للمجموعة من {oldEmoji} الى {newEmoji}."
-plugins.events.thread-update.approvalMode.changed: "\"{authorName}\" ({authorId}) تم تغيير وضع الإشراف على الأعضاء إلى {newApprovalMode}."
-plugins.events.thread-update.admins.added: "\"{authorName}\" ({authorId}) اضاف \"{targetName}\" ({targetId}) الى مدير مجموعة."
-plugins.events.thread-update.admins.removed:  "\"{authorName}\" ({authorId}) حذف \"{targetName}\" ({targetId}) من مدراء المجموعة."
-plugin.events.user-nickname.changedBy: "\"{authorName}\" ({authorId}) غير لقبه \"{targetName}\" ({targetId}) الى \"{newNickname}\"."
-plugin.events.user-nickname.changedBySelf: "\"{authorName}\" ({authorId}) غير لقبه الى \"{newNickname}\"."
+plugins.events.thread-update.color.changed: '"{authorName}" ({authorId}) تغير لون خط المجموعة من {oldColor} الى {newColor}.'
+plugins.events.thread-update.emoji.changed: '"{authorName}" ({authorId}) تغير الرمز التعبيري للمجموعة من {oldEmoji} الى {newEmoji}.'
+plugins.events.thread-update.approvalMode.changed: '"{authorName}" ({authorId}) تم تغيير وضع الإشراف على الأعضاء إلى {newApprovalMode}.'
+plugins.events.thread-update.admins.added: '"{authorName}" ({authorId}) اضاف "{targetName}" ({targetId}) الى مدير مجموعة.'
+plugins.events.thread-update.admins.removed: '"{authorName}" ({authorId}) حذف "{targetName}" ({targetId}) من مدراء المجموعة.'
+plugin.events.user-nickname.changedBy: '"{authorName}" ({authorId}) غير لقبه "{targetName}" ({targetId}) الى "{newNickname}".'
+plugin.events.user-nickname.changedBySelf: '"{authorName}" ({authorId}) غير لقبه الى "{newNickname}".'
 plugin.events.user-nickname.reversed: "\nلم يُسمح بتغيير الاسم المستعار ، لذلك قمت بتغييره مرة أخرى إلى الاسم المستعار القديم."
