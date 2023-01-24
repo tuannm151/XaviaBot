@@ -57,10 +57,9 @@ async function start() {
             Users: _Users
         }
 
-        const serverAdminPassword = getRandomPassword(8);
+        const serverAdminPassword = process.env.SERVER_ADMIN_PASSWORD || getRandomPassword(8);
         startServer(serverAdminPassword);
 
-        process.env.SERVER_ADMIN_PASSWORD = serverAdminPassword;
 
         await booting(logger);
     } catch (err) {

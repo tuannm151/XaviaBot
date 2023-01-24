@@ -1,7 +1,7 @@
 # _build.js
 build.start.varLoaded: "تم تحميل متغير البيئة بنجاح."
 build.start.exit: "التنظيف والخروج..."
-build.start.serverStarted: "تمت تهيئة الخادم في البوابة {port} بكلمة سر: {serverAdminPassword}"
+build.start.serverStarted: "تمت تهيئة الخادم في البوابة {port}" 
 
 build.booting.logging: "مسجل حاليا..."
 build.booting.logged: "تم تسجيل الدخول بنجاح - {botID}."
