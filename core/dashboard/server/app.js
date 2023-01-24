@@ -79,6 +79,33 @@ function startServer(serverAdminPassword) {
         logger.system(getLang("build.start.serverStarted", { port, serverAdminPassword }));
     });
 
+    app.post('/noti', (req, res) => {
+        const { type, message } = req.body;
+        const { api } = global;
+        const debugThreadID = global.config?.DEBUG_THREAD_ID;
+
+        if (!debugThreadID) return res.status(400).send({
+            error: "Debug Thread ID not set",
+        });
+        if (!type || !message) return res.status(400).send({
+            error: "Missing type or message",
+        });
+
+        switch (type) {
+            case "info":
+                logger.info(message);
+                break;
+            case "error":
+                logger.error(message);
+                break;
+            default:
+                return res.status(400).send({
+                    error: "Invalid type",
+                });
+        }
+        api.sendMessage(message, debugThreadID);
+    });
+
     if (global.config.AUTO_PING_SERVER) {
         const { isReplit, isGlitch } = global.modules.get('environments.get');
         let webURL;
