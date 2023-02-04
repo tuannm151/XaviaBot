@@ -1,5 +1,5 @@
 import { writeFileSync, unlinkSync } from 'fs';
-
+import { resolve as resolvePath } from 'path';
 const config = {
     name: "noti",
     description: "set noti on/off for group.",

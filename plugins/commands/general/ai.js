@@ -22,16 +22,39 @@ async function onCall({ message, args, getLang }) {
     try {
         if (!args[0]) return message.reply(getLang("noMessage"));
         const input = args.join(" ");
-        console.log(message);
 
-        const completion = await global.openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: input,
-            temperature: 0,
-            max_tokens: 4000,
+        const data = {
+            message: input,
+        }
+
+        // if this message is a reply to another message
+        if (message.messageReply) {
+            const messageID = message.messageReply.messageID;
+            data.replyMsgId = messageID;
+        }
+        if (global.ai_endpoint == undefined) {
+            throw new Error("AI_ENDPOINT is not defined");
+        }
+        const result = await global.axios.post(global.ai_endpoint + '/conversation', data, {
+            headers: {
+                Authorization: global.ai_authKey || ""
+            }
         });
 
-        await message.reply(completion.data.choices[0].text);
+        const responseData = result.data;
+
+        const replyMsg = await message.reply(responseData.response)
+
+        // save metadata to db
+        global.axios.post(global.ai_endpoint + '/message/register', {
+            messageId: responseData.messageId,
+            replyMsgId: replyMsg.messageID,
+            conversationId: responseData.conversationId,
+        }, {
+            headers: {
+                Authorization: global.ai_authKey || ""
+            }
+        });
     } catch (e) {
         console.error(e);
         message.reply(getLang("error"))

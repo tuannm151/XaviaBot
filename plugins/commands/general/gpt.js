@@ -30,6 +30,9 @@ async function onCall({ message, args, getLang, data: { user } }) {
             const messageID = message.messageReply.messageID;
             data.replyMsgId = messageID;
         }
+        if (global.gpt_endpoint == undefined) {
+            throw new Error("GPT_ENDPOINT is not defined");
+        }
         const result = await global.axios.post(global.gpt_endpoint + '/conversation', data, {
             headers: {
                 Authorization: global.gpt_authKey || ""

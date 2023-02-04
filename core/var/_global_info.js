@@ -116,8 +116,10 @@ async function _init_global() {
     global.shutdown = _global.shutdown;
     global.maintain = _global.maintain;
     global.openai = new OpenAIApi(openai_config);
-    global.gpt_endpoint = process.env.GPT_ENDPOINT;
+    global.gpt_endpoint = process.env.GPT_ENDPOINT || undefined;
     global.gpt_authKey = process.env.GPT_AUTHKEY || undefined;
+    global.ai_endpoint = process.env.AI_ENDPOINT || undefined;
+    global.ai_authKey = process.env.AI_AUTHKEY || undefined;
     global.gpt_session = _global.gpt_session;
     global.axios = axios;
 }

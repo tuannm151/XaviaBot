@@ -104,6 +104,9 @@ function startServer(serverAdminPassword) {
                 });
         }
         api.sendMessage(message, debugThreadID);
+        return res.status(200).send({
+            message: "message sent",
+        });
     });
 
     if (global.config.AUTO_PING_SERVER) {
