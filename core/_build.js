@@ -87,7 +87,7 @@ function booting(logger) {
                 resolve();
             })
             .catch(err => {
-                if (isGlitch) {
+                if (isGlitch && global.isExists(resolvePath(process.cwd(), '.data', 'appstate.json'), 'file')) {
                     global.deleteFile(resolvePath(process.cwd(), '.data', 'appstate.json'));
                     execSync('refresh');
                 }
